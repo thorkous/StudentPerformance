@@ -1,6 +1,6 @@
 from django import forms
 from rest_framework import serializers
-from . models import Students, Subjects, SubjectMarks
+from . models import Students, Subjects, SubjectMarks, StudentPercentage
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,3 +29,13 @@ class SubjectMarksSerializer(serializers.ModelSerializer):
             'student_id',
             'student_marks'
         ]
+
+class StudentPercentageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudentPercentage
+        fields = [
+            'student_id',
+            'marks',
+            'total_subject'
+        ]
+        depth = 1
